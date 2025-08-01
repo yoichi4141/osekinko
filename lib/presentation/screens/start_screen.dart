@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_text_styles.dart';
 import '../widgets/custom_button.dart';
@@ -51,13 +52,7 @@ class StartScreen extends StatelessWidget {
                 CustomButton(
                   text: 'ゲームスタート',
                   onPressed: () {
-                    // TODO: プレイヤー設定画面またはゲーム画面への遷移
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('ゲーム開始！'),
-                        duration: Duration(seconds: 1),
-                      ),
-                    );
+                    context.go('/player-setup');
                   },
                   width: 300,
                   height: 70,
