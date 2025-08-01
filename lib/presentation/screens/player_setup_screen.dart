@@ -6,6 +6,7 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_text_styles.dart';
 import '../../application/providers/player_provider.dart';
 import '../../application/providers/app_state_provider.dart';
+import '../../application/providers/game_provider.dart';
 import '../widgets/custom_button.dart';
 
 class PlayerSetupScreen extends ConsumerWidget {
@@ -124,8 +125,8 @@ class PlayerSetupScreen extends ConsumerWidget {
                         text: 'スキップ（2人で開始）',
                         onPressed: () {
                           playerNotifier.resetPlayers();
-                          final appNotifier = ref.read(appStateProvider.notifier);
-                          appNotifier.startGame(['プレイヤー1', 'プレイヤー2']);
+                          final gameNotifier = ref.read(gameProvider.notifier);
+                          gameNotifier.startGame(['プレイヤー1', 'プレイヤー2']);
                           context.go('/game');
                         },
                         backgroundColor: AppColors.buttonSecondary,
@@ -140,8 +141,8 @@ class PlayerSetupScreen extends ConsumerWidget {
                         text: 'ゲーム開始',
                         onPressed: playerSetup.isValidPlayerCount 
                           ? () {
-                              final appNotifier = ref.read(appStateProvider.notifier);
-                              appNotifier.startGame(playerSetup.playerNames);
+                              final gameNotifier = ref.read(gameProvider.notifier);
+                              gameNotifier.startGame(playerSetup.playerNames);
                               context.go('/game');
                             }
                           : null,

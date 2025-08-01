@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../presentation/screens/start_screen.dart';
 import '../../presentation/screens/player_setup_screen.dart';
+import '../../presentation/screens/game_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -17,12 +18,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: 'player-setup',
         builder: (context, state) => const PlayerSetupScreen(),
       ),
-      // TODO: ゲーム画面のルートを追加
-      // GoRoute(
-      //   path: '/game',
-      //   name: 'game',
-      //   builder: (context, state) => const GameScreen(),
-      // ),
+      GoRoute(
+        path: '/game',
+        name: 'game',
+        builder: (context, state) => const GameScreen(),
+      ),
     ],
     errorBuilder: (context, state) => const StartScreen(),
   );
